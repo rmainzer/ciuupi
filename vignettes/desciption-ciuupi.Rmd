@@ -1,0 +1,59 @@
+---
+title: "Description of ciuupi"
+author: "Rheanna Mainzer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Description of the confidence interval that utilizes uncertain prior information (CIUUPI)
+
+Suppose that $y = X \beta + \varepsilon$ is a random $n$-vector of responses, $X$ is a known $n \times p$ matrix with linearly independent columns, $\beta$ is an unknown parameter $p$-vector, and  $\varepsilon \sim N(0, \, \sigma^2 \, I)$, with $\sigma^2$ assumed known. Suppose that the parameter of interest is $\theta = a^{\top} \beta$ and that there is uncertain prior information that $\tau = c^{\top} \beta - t = 0$, where $a$ and $c$ are specified linearly independent nonzero $p$-vectors and $t$ is a specified number.  This package computes a confidence interval, with minimum coverage $1 - \alpha$, for $\theta$ that utilizes the uncertain prior information that $\tau = 0$ through desirable expected length properties.
+
+Define $\hat{\beta}$ to be the least squares estimator of $\beta$.  Then $\hat{\theta} = a^{\top} \hat{\beta}$ and $\widehat{\tau} = c^{\top} \hat{\beta} - t$ are the least squares estimators of $\theta$ and $\tau$, respectively.  Also define $v_{\theta} = \text{Var}(\hat{\theta})/\sigma^2$, $v_{\tau} = \text{Var}(\hat{\tau})/\sigma^2$, $\gamma = \tau / (\sigma \, v_{\tau}^{1/2})$ and $\hat{\gamma} = \hat{\tau}/(\sigma \, v_{\tau}^{1/2})$.  The $1 - \alpha$ confidence interval for $\theta$ that utilizes uncertain prior information about $\tau$ (CIUUPI) has the form
+$$
+\left[ \hat{\theta} - v_{\theta}^{1/2} \, \sigma \, b(\hat{\gamma}) - v_{\theta}^{1/2} \, \sigma \, s(\hat{\gamma}), \, \hat{\theta} - v_{\theta}^{1/2} \, \sigma \, b(\hat{\gamma}) + v_{\theta}^{1/2} \, \sigma \, s(\hat{\gamma}) \right],
+$$
+
+
+where $b$ is an odd continuous function that takes the value $0$ for $|x| \geq 6$, and $s$ is an even continuous function that takes the value $z_{1-\alpha/2}$ for all $|x| \geq 6$, where $z_{1-\alpha/2}$ is the $1 - \alpha/2$ quantile of the standard normal distribution. The values of $b(x)$ and $s(x)$ for $x \in [-6,6]$ are determined
+by $(b(1), b(2), \dots, b(5), s(0), s(1), \dots, s(5))$ through either natural (default) or clamped cubic spline interpolation. 
+
+The CIUUPI is found by computing the value of $(b(1), b(2), \dots, b(5), s(0), s(1), \dots, s(5))$
+so that the confidence interval has 
+minimum coverage probability $1 - \alpha$ and desirable expected length properties.  This constrained optimization is carried out using a similar methodology to Kabaila and Mainzer (2017), Section 2.1, and using the `slsqp` function in the nloptr package.
+
+This confidence interval has the following three practical applications. Firstly,
+if $\sigma^2$ has been accurately estimated from previous data
+then it may be treated as being effectively known. Secondly, for 
+sufficiently large $n - p$ ($n-p \ge 30$, say)
+if we replace the assumed known value of $\sigma^2$ by its usual estimator 
+in the formula for the confidence interval then 
+the resulting interval has, to a very good approximation, the same 
+coverage probability and expected length properties as when $\sigma^2$ is known. 
+Thirdly, some more complicated models 
+can be approximated by the linear regression model with $\sigma^2$ known when 
+certain unknown parameters are replaced by estimates. 
+
+
+## Functions in this package
+
+The function `bsciuupi` is used to obtain the vector $(b(1), b(2), \dots, b(5), s(0), s(1), \dots, s(5))$. Once this vector is obtained, the functions $b$ and $s$ can be evaluated using `bsspline`.
+
+Define the scaled expected length of the CIUUPI to be the expected length of the CIUUPI divided by the expected length of the standard interval for $\theta$, given by
+$$
+\left[ \hat{\theta} - z_{1-\alpha/2} \, v_{\theta}^{1/2} \, \sigma, \, \hat{\theta} + z_{1-\alpha/2} \, v_{\theta}^{1/2} \, \sigma \right].
+$$
+
+For given $\alpha$, $a$, $c$ and $X$, the coverage probability and scaled expected length of the CIUUPI are even functions of the unknown parameter $\gamma$.  The coverage probability of the CIUUPI can be evaluated using `cpciuupi` and the scaled expected length of the CIUUPI can be evaluated using `selciuupi`. 
+
+Note that $\rho = \text{Cor}(\hat{\theta}, \hat{\tau}) = a^{\top} (X^{\top} X)^{-1} c / (v_{\theta} v_{\tau})^{1/2}$ can be specified instead of $a$, $c$ and $X$ in the above functions.
+
+For given $\alpha$, $a$, $X$, $\sigma$ and $y$ we can obtain the standard confidence interval for $\theta$ using the `cistandard` function.  If, in addition, we have $c$ and $t$ (used to determine $\tau$), we can estimate $\hat{\gamma}$.  For given $\alpha$, $a$, $c$, $t$, $X$, $\sigma$ and $y$, we can obtain the CIUUPI, using the `ciuupi` function.  
+
+
+## References
+Kabaila, P. and Mainzer, R. (2017).  Confidence intervals that utilize uncertain prior information about exogeneity in panel data. URL https://arxiv.org/pdf/1708.09543.pdf.
