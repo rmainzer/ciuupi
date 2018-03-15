@@ -1,0 +1,27 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# ciuupi
+
+The goal of ciuupi is to compute confidence intervals that utilize uncertain prior information in linear regression.  These confidence intervals have desirable coverage and expected length properties.
+
+
+## Installation
+
+You can install ciuupi from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("rmainzer/ciuupi")
+```
