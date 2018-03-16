@@ -24,6 +24,9 @@ Description:
   as when the error variance is known. Thirdly, some more complicated models can be 
   approximated by the linear regression model with error variance known when certain 
   unknown parameters are replaced by estimates. 
+  This confidence interval is described in Kabaila, P. and Mainzer, R. (2017) 
+  <arXiv:1708.09543>, and is a member of the family of confidence intervals proposed 
+  by Kabaila, P. and Giri, K. (2009) <doi:10.1016/j.jspi.2009.03.018>.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true

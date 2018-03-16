@@ -3,6 +3,14 @@ title: "CRAN-comments"
 output: html_document
 ---
 
+## Resubmission
+This is a resubmission.  In this version I have:
+
+* Added a reference for the method to the 'Description' field of 
+the DESCRIPTION file
+* Unwrapped examples previously wrapped in `\dontrun{}` and modified these so
+that they can be executed in <5 seconds
+
 ## Test enviornments 
 * local Windows 10, R 3.4.3
 * ubuntu 14.04 (on travis-ci), R 3.4.3
