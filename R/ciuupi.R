@@ -19,9 +19,9 @@
 #' @return The confidence interval that utilizes uncertain prior information
 #'
 #' @details
-#'Suppose that \deqn{y = X \beta + \epsilon} where \eqn{y} is a random \eqn{n}-vector of
-#'responses, \eqn{X} is a known \eqn{n} by \eqn{p} matrix with linearly
-#'independent columns, \eqn{\beta} is an unknown parameter \eqn{p}-vector and
+#' Suppose that \deqn{y = X \beta + \epsilon} where \eqn{y} is a random \eqn{n}-vector of
+#' responses, \eqn{X} is a known \eqn{n} by \eqn{p} matrix with linearly
+#' independent columns, \eqn{\beta} is an unknown parameter \eqn{p}-vector and
 #' \eqn{\epsilon} with components that are iid normally distributed
 #' with zero mean and known variance.
 #' Then \code{ciuupi} will compute a confidence interval for
@@ -35,7 +35,7 @@
 #' Dicsussion 5.8, p.3426 of Kabaila and Giri (2009).
 #'
 #' @examples
-#' \dontrun{
+#' # Specify alpha, a, c, x
 #' alpha <- 0.05
 #' a <- c(0, 2, 0, -2)
 #' c <- c(0, 0, 0, 1)
@@ -43,14 +43,21 @@
 #' x2 <- c(-1, -1, 1, 1)
 #' x <- cbind(rep(1, 4), x1, x2, x1*x2)
 #'
-#' bsvec <- bsciuupi(alpha, a = a, c = c, x = x)
+#' # The following command is used to obtain bsvec:
+#' # bsvec <- bsciuupi(alpha, a = a, c = c, x = x)
+#' # This may take a few minutes to run
+#' # The end result (to 7 decimal places) is
+#' bsvec <- c(-0.03639701, -0.18051953, -0.25111411, -0.15830362, -0.04479113,
+#'            1.71997203, 1.79147968, 2.03881195, 2.19926399, 2.11845381,
+#'            2.00482563)
 #'
+#' # Specify t and y
 #' t <- 0
 #' y <- c(87.2, 88.4, 86.7, 89.2)
 #'
+#' # Find the CIUUPI
 #' res <- ciuupi(alpha, a, c, x, bsvec, t, y, natural = 1, sig = 0.8)
 #' res
-#' }
 #'
 #' @references
 #'
