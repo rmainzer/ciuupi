@@ -7,7 +7,7 @@ output: html_document
 This is a resubmission.  In this version I have:
 
 * Modified examples to use `\donttest{}` instead of commenting out code that 
-took >5 seconds to execute
+takes >5 seconds to execute
 
 ## Test enviornments 
 * local Windows 10, R 3.4.3
