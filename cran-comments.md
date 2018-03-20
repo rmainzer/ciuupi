@@ -6,10 +6,8 @@ output: html_document
 ## Resubmission
 This is a resubmission.  In this version I have:
 
-* Added a reference for the method to the 'Description' field of 
-the DESCRIPTION file
-* Unwrapped examples previously wrapped in `\dontrun{}` and modified these so
-that they can be executed in <5 seconds
+* Modified examples to use `\donttest{}` instead of commenting out code that 
+took >5 seconds to execute
 
 ## Test enviornments 
 * local Windows 10, R 3.4.3
