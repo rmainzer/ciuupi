@@ -43,10 +43,13 @@
 #' x2 <- c(-1, -1, 1, 1)
 #' x <- cbind(rep(1, 4), x1, x2, x1*x2)
 #'
-#' # The following command is used to obtain bsvec:
-#' # bsvec <- bsciuupi(alpha, a = a, c = c, x = x)
-#' # This may take a few minutes to run
-#' # The end result (to 7 decimal places) is
+#' # Find the vector (b(1),b(2),...,b(5),s(0),s(1),...,s(5)) that specifies the
+#' # CIUUPI: (this may take a few minutes to run)
+#' \donttest{
+#' bsvec <- bsciuupi(alpha, a = a, c = c, x = x)
+#' }
+#'
+#' # The result (to 7 decimal places) is
 #' bsvec <- c(-0.03639701, -0.18051953, -0.25111411, -0.15830362, -0.04479113,
 #'            1.71997203, 1.79147968, 2.03881195, 2.19926399, 2.11845381,
 #'            2.00482563)
