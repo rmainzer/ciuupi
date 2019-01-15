@@ -75,7 +75,7 @@ cpciuupi <- function(gam, bsvec, alpha, natural = 1, rho = NULL, a, c, x){
     # Do the QR decomposition of the X matrix and find X transpose X inverse
     qrstr <- qr(x)
     R <- qr.R(qrstr)
-    XTXinv <- solve(t(R) %*% R)
+    XTXinv <- chol2inv(R)
 
     # Compute rho
     rho <- (t(a) %*% XTXinv %*% c) / sqrt( t(a) %*% XTXinv %*% a %*% t(c) %*% XTXinv %*% c)

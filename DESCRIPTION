@@ -1,7 +1,7 @@
 Package: ciuupi
 Type: Package
 Title: Confidence Intervals Utilizing Uncertain Prior Information
-Version: 1.1.0.9000
+Version: 1.1.0
 Authors@R: c( person("Rheanna", "Mainzer",
     email = "rheanna.mainzer@unimelb.edu.au", role = c("aut", "cre")),
     person("Paul", "Kabaila", email = "P.Kabaila@latrobe.edu.au", role = "aut"))

@@ -79,7 +79,7 @@ ciuupi <- function(alpha, a, c, x, bsvec, t, y, natural = 1, sig = NULL){
   # Do the QR decomposition of the X matrix and find X transpose X inverse
   qrstr <- qr(x)
   R <- qr.R(qrstr)
-  XTXinv <- solve(t(R) %*% R)
+  XTXinv <- chol2inv(R)
 
   # Find beta hat, theta hat and tau hat
   beta.hat <- XTXinv %*% t(x) %*% y
