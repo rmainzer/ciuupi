@@ -4,7 +4,7 @@ output: html_document
 ---
 
 ## New version
-This is version 1.0.1 of the ciuupi package.  In this version I have:
+This is version 1.1.0 of the ciuupi package.  In this version I have:
 
 * Implemented a numerically stable computation of the XTXinv matrix
 
