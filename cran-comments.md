@@ -3,27 +3,18 @@ title: "CRAN-comments"
 output: html_document
 ---
 
-## Resubmission
-This is a resubmission.  In this version I have:
+## New version
+This is version 1.0.1 of the ciuupi package.  In this version I have:
 
-* Modified examples to use `\donttest{}` instead of commenting out code that 
-takes >5 seconds to execute
+* Implemented a numerically stable computation of the XTXinv matrix
 
 ## Test enviornments 
 * local Windows 10, R 3.4.3
-* ubuntu 14.04 (on travis-ci), R 3.4.3
+* ubuntu 14.04 (on travis-ci), R 3.5.2
 * win-builder (devel)
 
 ## R CMD check results
-There were no ERRORs, WARNINGs.
-
-There was 1 NOTE:
-
-* checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'Rheanna Mainzer <rheanna.mainzer@unimelb.edu.au>'
-  New submission
-  
-  This is my first submission.
+There were no ERRORs, WARNINGs or NOTEs.
 
 ## Downstream dependencies
 There are currently no downstream dependencies for this package.
